@@ -389,51 +389,50 @@ document.querySelectorAll('a[href="#work"], a[href="#studio"], a[href="#contact"
     });
 
     // --- LOADER ---
-    const loadTl = gsap.timeline({
-      onComplete: () => {
-  document.body.style.opacity = 1;
-  document.body.style.visibility = 'visible';  // ← ADD THIS LINE
-  initSite();
-}
-    });
+   // --- LOADER & HERO (SYNCED) ---
+const loadTl = gsap.timeline();
 
-    loadTl.to('.loader-bar', { width: '100%', duration: 1.5, ease: 'power2.inOut' })
-          .to('.loader-text', { y: -50, opacity: 0, duration: 0.5 })
-          .to('.loader', { yPercent: -100, duration: 1, ease: 'power4.inOut' });
+// Start hero animations immediately (don't wait for loader)
+gsap.to('.hero-text span', { 
+  y: 0, 
+  stagger: 0.1, 
+  duration: 1.2, 
+  ease: 'power3.out',
+  delay: 0.1 // Just a tiny delay to ensure DOM is ready
+});
 
-    function initSite() {
-      // Hero Animations
-      gsap.to('.hero-text span', { y: 0, stagger: 0.1, duration: 1.5, ease: 'power4.out' });
-      gsap.to('.hero-fade', { opacity: 1, duration: 1, delay: 0.5 });
-      
-      // Hero Parallax
-      gsap.to('.hero-img', {
-        yPercent: 30,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.hero-img',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true
+gsap.to('.hero-fade', { 
+  opacity: 1, 
+  duration: 0.8, 
+  delay: 0.3 
+});
+
+// Run loader animation independently
+loadTl.to('.loader-bar', { width: '100%', duration: 0.8, ease: 'power2.inOut' })
+      .to('.loader-text', { y: -50, opacity: 0, duration: 0.2 }, '-=0.1')
+      .to('.loader', { 
+        yPercent: -100, 
+        duration: 0.5, 
+        ease: 'power3.inOut',
+        onComplete: () => {
+          document.body.style.opacity = 1;
+          document.body.style.visibility = 'visible';
+          initSite(); // Start other scroll animations
         }
-      });
+      }, '-=0.2');
 
-      // Text Reveal
-      const splitElements = document.querySelectorAll('.split-animate');
-      splitElements.forEach(el => {
-        const words = el.querySelectorAll('.word-inner');
-        gsap.to(words, {
-          y: "0%",
-          duration: 1,
-          ease: "power3.out",
-          stagger: 0.02,
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%", 
-            toggleActions: "play none none reverse"
-          }
-        });
-      });
+function initSite() {
+  // Hero Parallax (keep this)
+  gsap.to('.hero-img', {
+    yPercent: 30,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.hero-img',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: true
+    }
+  });
 
       // Card Stack Animation
       const cards = gsap.utils.toArray('.card-item');
