@@ -30,7 +30,7 @@
   margin: 0;
   overflow-x: hidden;
   opacity: 1;
-  visibility: hidden;  /* ← ADD THIS LINE */
+ 
 }
     .wrapper {
       position: relative;
@@ -415,11 +415,27 @@ loadTl.to('.loader-bar', { width: '100%', duration: 0.8, ease: 'power2.inOut' })
         yPercent: -100, 
         duration: 0.5, 
         ease: 'power3.inOut',
-        onComplete: () => {
-          document.body.style.opacity = 1;
-          document.body.style.visibility = 'visible';
-          initSite(); // Start other scroll animations
-        }
+        oonComplete: () => {
+  document.body.style.opacity = 1;
+  document.body.style.visibility = 'visible';
+  
+  // Start hero animations here, after body is visible
+  gsap.set('.hero-text span', { y: '100%' });
+  gsap.to('.hero-text span', { 
+    y: '0%', 
+    stagger: 0.15, 
+    duration: 1.2, 
+    ease: 'power3.out'
+  });
+  
+  gsap.to('.hero-fade', { 
+    opacity: 1, 
+    duration: 0.8, 
+    delay: 0.3 
+  });
+  
+  initSite();
+}
       }, '-=0.2');
 
 function initSite() {
