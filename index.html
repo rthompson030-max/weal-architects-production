@@ -24,13 +24,14 @@
       --font-body: 'Manrope', sans-serif;
     }
     body {
-      background-color: var(--c-bg);
-      color: var(--c-dark);
-      font-family: var(--font-body);
-      margin: 0;
-      overflow-x: hidden;
-      opacity: 1;
-    }
+  background-color: var(--c-bg);
+  color: var(--c-dark);
+  font-family: var(--font-body);
+  margin: 0;
+  overflow-x: hidden;
+  opacity: 1;
+  visibility: hidden;  /* ← ADD THIS LINE */
+}
     .wrapper {
       position: relative;
       z-index: 10;
@@ -390,9 +391,10 @@ document.querySelectorAll('a[href="#work"], a[href="#studio"], a[href="#contact"
     // --- LOADER ---
     const loadTl = gsap.timeline({
       onComplete: () => {
-        document.body.style.opacity = 1;
-        initSite();
-      }
+  document.body.style.opacity = 1;
+  document.body.style.visibility = 'visible';  // ← ADD THIS LINE
+  initSite();
+}
     });
 
     loadTl.to('.loader-bar', { width: '100%', duration: 1.5, ease: 'power2.inOut' })
