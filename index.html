@@ -392,13 +392,14 @@ document.querySelectorAll('a[href="#work"], a[href="#studio"], a[href="#contact"
    // --- LOADER & HERO (SYNCED) ---
 const loadTl = gsap.timeline();
 
-// Start hero animations immediately (don't wait for loader)
+// Start hero animations immediately
+gsap.set('.hero-text span', { y: '100%' }); // Ensure they start hidden
 gsap.to('.hero-text span', { 
-  y: 0, 
-  stagger: 0.1, 
+  y: '0%', 
+  stagger: 0.15, 
   duration: 1.2, 
   ease: 'power3.out',
-  delay: 0.1 // Just a tiny delay to ensure DOM is ready
+  delay: 0.2
 });
 
 gsap.to('.hero-fade', { 
