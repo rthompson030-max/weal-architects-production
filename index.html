@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Manrope:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- GSAP / Lenis -->
@@ -23,6 +26,7 @@
       --font-display: 'Syncopate', sans-serif;
       --font-body: 'Manrope', sans-serif;
     }
+
     body {
       background-color: var(--c-bg);
       color: var(--c-dark);
@@ -31,23 +35,27 @@
       overflow-x: hidden;
       opacity: 1;
     }
+
     .wrapper {
       position: relative;
       z-index: 10;
       background-color: var(--c-bg);
       margin-bottom: 100vh;
-      box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+      box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
     }
+
     .word-wrap {
       display: inline-block;
       overflow: hidden;
       vertical-align: top;
       padding-bottom: 0.1em;
     }
+
     .word-inner {
       display: inline-block;
       transform: translateY(110%);
     }
+
     .loader {
       position: fixed;
       inset: 0;
@@ -58,11 +66,13 @@
       align-items: center;
       color: #fff;
     }
+
     .loader-text {
       font-family: var(--font-display);
       font-size: 5vw;
       font-weight: 700;
     }
+
     .loader-bar {
       position: absolute;
       bottom: 0;
@@ -71,12 +81,14 @@
       background: #fff;
       width: 0%;
     }
+
     .stack-section {
       padding: 10vh 0;
       background: var(--c-dark);
       color: #E3E1DC;
       position: relative;
     }
+
     .stack-container {
       width: 100%;
       max-width: 1400px;
@@ -84,6 +96,7 @@
       position: relative;
       padding-bottom: 10vh;
     }
+
     .card-item {
       position: sticky;
       top: 10vh;
@@ -94,17 +107,19 @@
       justify-content: center;
       margin-bottom: 5vh;
     }
+
     .card-inner {
       width: 90%;
       height: 100%;
       background: #1a1a1a;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       position: relative;
       overflow: hidden;
       display: grid;
       grid-template-columns: 1fr 1.2fr;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
     }
+
     .card-content {
       padding: 4rem;
       display: flex;
@@ -113,27 +128,45 @@
       background: #1a1a1a;
       z-index: 2;
     }
+
     .card-img-wrap {
       position: relative;
       width: 100%;
       height: 100%;
       overflow: hidden;
     }
+
     .card-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 1.5s ease;
     }
+
     .card-inner:hover .card-img {
       transform: scale(1.1);
     }
+
     @media (max-width: 768px) {
-      .card-inner { grid-template-columns: 1fr; }
-      .card-item { top: 5vh; height: 85vh; }
-      .card-img-wrap { height: 50%; order: -1; }
-      .card-content { padding: 2rem; }
+      .card-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .card-item {
+        top: 5vh;
+        height: 85vh;
+      }
+
+      .card-img-wrap {
+        height: 50%;
+        order: -1;
+      }
+
+      .card-content {
+        padding: 2rem;
+      }
     }
+
     .footer-sticky {
       position: fixed;
       bottom: 0;
@@ -148,7 +181,11 @@
       justify-content: center;
       align-items: center;
     }
-    .display { font-family: var(--font-display); }
+
+    .display {
+      font-family: var(--font-display);
+    }
+
     .noise-overlay {
       position: fixed;
       inset: 0;
@@ -159,6 +196,7 @@
     }
   </style>
 </head>
+
 <body>
   <!-- UTILS -->
   <div class="noise-overlay"></div>
@@ -169,7 +207,8 @@
   </div>
   <!-- NAVIGATION -->
   <nav class="fixed top-0 w-full p-8 flex justify-between items-center z-50 mix-blend-difference text-white">
-    <div class="display font-bold text-base tracking-tighter">Weal Architects</div>
+    <a href="#hero" class="display font-bold text-base tracking-tighter hover:opacity-70 transition-opacity">Weal
+      Architects</a>
     <div class="hidden md:flex gap-10 text-xs uppercase tracking-widest">
       <a href="#work" class="hover:text-gray-300 transition-colors">Work</a>
       <a href="#studio" class="hover:text-gray-300 transition-colors">Studio</a>
@@ -179,8 +218,10 @@
   <!-- WRAPPER -->
   <div class="wrapper">
     <!-- HERO -->
-    <section class="h-screen relative flex items-center justify-center overflow-hidden">
-      <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/482e7b6a-168c-4d0d-b35d-0e2ff4014577_3840w.webp" class="absolute inset-0 w-full h-full object-cover brightness-75 hero-img" alt="Hero">
+    <section id="hero" class="h-screen relative flex items-center justify-center overflow-hidden">
+      <img
+        src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/482e7b6a-168c-4d0d-b35d-0e2ff4014577_3840w.webp"
+        class="absolute inset-0 w-full h-full object-cover brightness-75 hero-img" alt="Hero">
       <div class="relative z-10 text-center text-white mix-blend-difference">
         <h1 class="display leading-none hero-text overflow-hidden" style="font-size: 8vw;">
           <span class="block">Weal</span>
@@ -188,25 +229,26 @@
         <h1 class="display leading-none hero-text overflow-hidden" style="font-size: 8vw;">
           <span class="block">Architects</span>
         </h1>
-        <p class="mt-8 text-sm uppercase tracking-[0.5em] opacity-0 hero-fade mix-blend-difference">Future Architecture</p>
+        <p class="mt-8 text-sm uppercase tracking-[0.5em] opacity-0 hero-fade mix-blend-difference">Future Architecture
+        </p>
       </div>
     </section>
     <!-- STUDIO -->
-    <section
-      id="studio"
-      class="py-32 px-6 md:px-20 grid md:grid-cols-2 gap-16 max-w-[1800px] mx-auto"
-      style="background: var(--c-bg);"
-    >
+    <section id="studio" class="py-32 px-6 md:px-20 grid md:grid-cols-2 gap-16 max-w-[1800px] mx-auto"
+      style="background: var(--c-bg);">
       <div>
         <h2 class="display leading-tight" style="font-size: 2rem; color: #333;">
           FRANCESCA WEAL
           <br>
-          <span class="text-[var(--c-accent)]" style="font-size: 1.25rem; color: #374336;">MA DipArch(Cantab) RIBA SCA</span>
+          <span class="text-[var(--c-accent)]" style="font-size: 1.25rem; color: #374336;">MA DipArch(Cantab) RIBA
+            SCA</span>
         </h2>
       </div>
       <div class="text-xl font-light leading-relaxed" style="color: #333;">
         <p class="mb-8">
-          Director of WEAL-Architects, now based in the top floor of a listed former mill in Wheathampstead. My projects have won awards including an RIBA Regional Award for the church of Our Lady &amp; Saint Vincent in Potters Bar.
+          Director of WEAL-Architects, now based in the top floor of a listed former mill in Wheathampstead. My projects
+          have won awards including an RIBA Regional Award for the church of Our Lady &amp; Saint Vincent in Potters
+          Bar.
         </p>
         <div class="h-px w-full bg-black/10 my-8"></div>
         <div class="flex gap-12 text-sm uppercase tracking-widest">
@@ -234,10 +276,14 @@
               <div class="text-gray-400 font-light">
                 A minimal concrete residence focused on negative space and light manipulation.
               </div>
-              <button class="text-left uppercase tracking-widest text-xs border-b border-white/30 pb-2 w-max hover:text-white transition-colors">View Project</button>
+              <button
+                class="text-left uppercase tracking-widest text-xs border-b border-white/30 pb-2 w-max hover:text-white transition-colors">View
+                Project</button>
             </div>
             <div class="card-img-wrap">
-              <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/0dccab47-16b0-4716-9e1a-b97f124e3031_1600w.webp" class="card-img object-cover w-full h-auto" alt="Project 1">
+              <img
+                src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/0dccab47-16b0-4716-9e1a-b97f124e3031_1600w.webp"
+                class="card-img object-cover w-full h-auto" alt="Project 1">
             </div>
           </div>
         </div>
@@ -253,10 +299,14 @@
               <div class="text-gray-400 font-light">
                 Adaptive reuse of a WWII bunker into a sustainable vertical farm and living space.
               </div>
-              <button class="text-left uppercase tracking-widest text-xs border-b border-white/30 pb-2 w-max hover:text-white transition-colors">View Project</button>
+              <button
+                class="text-left uppercase tracking-widest text-xs border-b border-white/30 pb-2 w-max hover:text-white transition-colors">View
+                Project</button>
             </div>
             <div class="card-img-wrap">
-              <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/952269bf-60f5-48dc-afce-13953bead1eb_1600w.webp" class="card-img object-cover w-full h-auto" alt="Project 2">
+              <img
+                src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/952269bf-60f5-48dc-afce-13953bead1eb_1600w.webp"
+                class="card-img object-cover w-full h-auto" alt="Project 2">
             </div>
           </div>
         </div>
@@ -272,10 +322,14 @@
               <div class="text-gray-400 font-light">
                 A glass and steel structure cantilevered over the volcanic landscape.
               </div>
-              <button class="text-left uppercase tracking-widest text-xs border-b border-white/30 pb-2 w-max hover:text-white transition-colors">View Project</button>
+              <button
+                class="text-left uppercase tracking-widest text-xs border-b border-white/30 pb-2 w-max hover:text-white transition-colors">View
+                Project</button>
             </div>
             <div class="card-img-wrap">
-              <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/aa5ed4de-1a7e-4bb7-b0ea-1a4c511663df_1600w.webp" class="card-img object-cover w-full h-auto" alt="Project 3">
+              <img
+                src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/aa5ed4de-1a7e-4bb7-b0ea-1a4c511663df_1600w.webp"
+                class="card-img object-cover w-full h-auto" alt="Project 3">
             </div>
           </div>
         </div>
@@ -285,17 +339,21 @@
     <section class="py-40 bg-[#E3E1DC] text-center flex flex-col items-center justify-center relative z-10">
       <h2 class="display text-3xl md:text-5xl mb-8">Designing with Purpose</h2>
       <div class="max-w-xl text-gray-600 font-light mb-12 leading-relaxed">
-        I am RIBA accredited as a Specialist Conservation Architect (equivalent to AABC), but my passion also lies in combining cutting-edge design with the intelligent use of traditional building materials in innovative ways. I particularly enjoy transforming and elevating 'ordinary' houses and places, always seeking out new challenges that test the boundaries of architectural creativity.
+        I am RIBA accredited as a Specialist Conservation Architect (equivalent to AABC), but my passion also lies in
+        combining cutting-edge design with the intelligent use of traditional building materials in innovative ways. I
+        particularly enjoy transforming and elevating 'ordinary' houses and places, always seeking out new challenges
+        that test the boundaries of architectural creativity.
       </div>
       <div class="h-16 w-px bg-black/20"></div>
     </section>
-  </div> 
+  </div>
   <!-- END WRAPPER -->
   <!-- FOOTER -->
   <footer id="contact" class="footer-sticky">
     <div class="relative z-10 text-center">
       <div class="text-xs uppercase tracking-[0.3em] mb-4 text-gray-500">Have a project?</div>
-      <a href="mailto:hello@aethereal.com" class="display text-[8vw] leading-none hover:text-gray-400 transition-colors">LET'S TALK</a>
+      <a href="mailto:hello@aethereal.com"
+        class="display text-[8vw] leading-none hover:text-gray-400 transition-colors">LET'S TALK</a>
       <div class="flex justify-center gap-8 mt-12 text-sm uppercase tracking-widest text-gray-400">
         <a href="#" class="hover:text-white">Instagram</a>
         <a href="#" class="hover:text-white">LinkedIn</a>
@@ -303,18 +361,20 @@
       </div>
       <div class="mt-20 text-[10px] text-gray-500">© 2026 Weal Architects</div>
     </div>
-    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/1c6b6980-54e4-4d8c-9ff6-e09b844d7b01_3840w.webp" class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none">
+    <img
+      src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/1c6b6980-54e4-4d8c-9ff6-e09b844d7b01_3840w.webp"
+      class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none">
   </footer>
   <script>
     gsap.registerPlugin(ScrollTrigger);
     const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), direction: 'vertical', smooth: true });
     function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
-    document.querySelectorAll('a[href="#work"], a[href="#studio"], a[href="#contact"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+    document.querySelectorAll('a[href="#hero"], a[href="#work"], a[href="#studio"], a[href="#contact"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const href = this.getAttribute('href');
-        if (href === '#contact') { window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); } 
+        if (href === '#contact') { window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); }
         else { const target = document.querySelector(href); if (target) { lenis.scrollTo(target); } }
       });
     });
@@ -331,18 +391,20 @@
     document.querySelectorAll('.split-animate').forEach(el => { splitTextToWords(el); });
     const loadTl = gsap.timeline();
     loadTl.to('.loader-bar', { width: '100%', duration: 0.6, ease: 'power2.inOut' })
-          .to('.loader-text', { y: -50, opacity: 0, duration: 0.2 }, '-=0.1')
-          .to('.loader', { yPercent: -100, duration: 0.4, ease: 'power2.inOut', onComplete: () => {
-            document.body.style.visibility = 'visible';
-            gsap.fromTo('.hero-text span', { y: '100%' }, { y: '0%', stagger: 0.15, duration: 1.2, ease: 'power3.out' });
-            gsap.fromTo('.hero-fade', { opacity: 0 }, { opacity: 1, duration: 0.8, delay: 0.2 });
-            initSite();
-          } }, '-=0.1');
+      .to('.loader-text', { y: -50, opacity: 0, duration: 0.2 }, '-=0.1')
+      .to('.loader', {
+        yPercent: -100, duration: 0.4, ease: 'power2.inOut', onComplete: () => {
+          document.body.style.visibility = 'visible';
+          gsap.fromTo('.hero-text span', { y: '100%' }, { y: '0%', stagger: 0.15, duration: 1.2, ease: 'power3.out' });
+          gsap.fromTo('.hero-fade', { opacity: 0 }, { opacity: 1, duration: 0.8, delay: 0.2 });
+          initSite();
+        }
+      }, '-=0.1');
     function initSite() {
       gsap.to('.hero-img', { yPercent: 30, ease: 'none', scrollTrigger: { trigger: '.hero-img', start: 'top top', end: 'bottom top', scrub: true } });
       const cards = gsap.utils.toArray('.card-item');
       cards.forEach((card, i) => {
-        const nextCard = cards[i+1];
+        const nextCard = cards[i + 1];
         if (nextCard) {
           gsap.to(card.querySelector('.card-inner'), { scale: 0.9, opacity: 0.4, ease: "none", scrollTrigger: { trigger: nextCard, start: "top bottom", end: "top 10vh", scrub: true } });
         }
@@ -351,4 +413,5 @@
     }
   </script>
 </body>
-</html>
+
+</html>/
